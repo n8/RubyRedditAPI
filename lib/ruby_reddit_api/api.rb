@@ -27,6 +27,13 @@ module Reddit
       read("/r/#{subreddit}.json", options )
     end
 
+    def hot(options={})
+      if options[:limit]
+        options.merge!({:query => {:limit => options[:limit]}})
+      end
+      read("/hot.json", options)
+    end
+
     # Search reddit
     # @param [String, Hash] Search terms and options
     # @example
